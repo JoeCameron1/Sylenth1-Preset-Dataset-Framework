@@ -1,0 +1,2200 @@
+{
+  "ampenv_a_attack": {
+    "name": "ampenv_a_attack",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "ADSR Envelope Attack for Oscillator A"
+  },
+  "ampenv_a_decay": {
+    "name": "ampenv_a_decay",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "ADSR Envelope Decay for Oscillator A"
+  },
+  "ampenv_a_sustain": {
+    "name": "ampenv_a_sustain",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "ADSR Envelope Sustain for Oscillator A"
+  },
+  "ampenv_a_release": {
+    "name": "ampenv_a_release",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "ADSR Envelope Release for Oscillator A"
+  },
+  "ampenv_b_attack": {
+    "name": "ampenv_b_attack",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "ADSR Envelope Attack for Oscillator B"
+  },
+  "ampenv_b_decay": {
+    "name": "ampenv_b_decay",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "ADSR Envelope Decay for Oscillator B"
+  },
+  "ampenv_b_sustain": {
+    "name": "ampenv_b_sustain",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "ADSR Envelope Sustain for Oscillator B"
+  },
+  "ampenv_b_release": {
+    "name": "ampenv_b_release",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "ADSR Envelope Release for Oscillator B"
+  },
+  "osc_a1_detune": {
+    "name": "osc_a1_detune",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Detune Parameter for Oscillator A1"
+  },
+  "osc_a1_fine": {
+    "name": "osc_a1_fine",
+    "type": "float",
+    "min": -1.000,
+    "max": 1.000,
+    "description": "Pitch can be fine-tuned between two half notes for Oscillator A1"
+  },
+  "osc_a1_invert": {
+      "name": "osc_a1_invert",
+      "type": "bool",
+      "options": ["True", "False"],
+      "description": "The Oscillator A1 Invert button inverts the Oscillator A1’s output (Boolean False=Off, True=On). This can be useful when creating PWM-like sound effects. For example, if you add two saw oscillators and invert one of them, the resulting waveform will be a pulse. You can then adjust the pulse width by changing the phase of one of the oscillators."
+  },
+  "osc_a1_note": {
+    "name": "osc_a1_note",
+    "type": "enum",
+    "min": "-7",
+    "max": "7",
+    "options": [
+        "-7",
+        "-6",
+        "-5",
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+    ],
+    "description": "Tune the voices of Oscillator A1 to another specific note"
+  },
+  "osc_a1_octave": {
+    "name": "osc_a1_octave",
+    "type": "enum",
+    "min": "-3",
+    "max": "3",
+    "options": [
+        "-3",
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3"
+    ],
+    "description": "Tune the voices of Oscillator A1 to another specific octave"
+  },
+  "osc_a1_pan": {
+    "name": "osc_a1_pan",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Pans the output of Oscillator A1 to the left (-10) or right (10) channel."
+  },
+  "osc_a1_phase_deg": {
+    "name": "osc_a1_phase_deg",
+    "type": "float",
+    "min": 0.0,
+    "max": 360.0,
+    "description": "This knob will change the starting point of Oscillator A1's waveform. It will only function when Retrigger is enabled."
+  },
+  "osc_a1_retrigger": {
+      "name": "osc_a1_retrigger",
+      "type": "bool",
+      "options": ["True", "False"],
+      "description": "The Retrigger button can be used to force all of Oscillator A1's voices to start at the exact same location on the waveform every time a new note is played (Boolean False=Off, True=On). That location can be changed using the Phase knob. If Phase is set to 0, the voices will restart at the beginning of the waveform period. If it is set to 180 degrees, the voices will start halfway the period, while setting it to 360 degrees will make them start at the end of the waveform, which is equivalent to the beginning."
+  },
+  "osc_a1_stereo": {
+    "name": "osc_a1_stereo",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Sets the level of stereo separation between Oscillator A1's individual voices. If set to 0 it will generate a mono sound, if set to 10 the voices will be fully spread over the left and right channels. This only has effect if there are more than 1 voices."
+  },
+  "osc_a1_voices": {
+    "name": "osc_a1_voices",
+    "type": "enum",
+    "min": "0",
+    "max": "8",
+    "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+    ],
+    "description": "Voices Parameter for Oscillator A1"
+  },
+  "osc_a1_volume": {
+    "name": "osc_a1_volume",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Sets the output volume of Oscillator A1"
+  },
+  "osc_a1_waveform": {
+    "name": "osc_a1_waveform",
+    "type": "enum",
+    "options": [
+      "Sine",
+      "Saw",
+      "Triangle",
+      "Pulse",
+      "HPulse",
+      "QPulse",
+      "TriSaw",
+      "Noise"
+    ],
+    "description": "Type of Waveform for Oscillator A1"
+  },
+  "osc_a2_detune": {
+    "name": "osc_a2_detune",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Detune Parameter for Oscillator A2"
+  },
+  "osc_a2_fine": {
+    "name": "osc_a2_fine",
+    "type": "float",
+    "min": -1.000,
+    "max": 1.000,
+    "description": "Pitch can be fine-tuned between two half notes for Oscillator A2"
+  },
+  "osc_a2_invert": {
+      "name": "osc_a2_invert",
+      "type": "bool",
+      "options": ["True", "False"],
+      "description": "The Oscillator A2 Invert button inverts the Oscillator A2’s output (Boolean False=Off, True=On). This can be useful when creating PWM-like sound effects. For example, if you add two saw oscillators and invert one of them, the resulting waveform will be a pulse. You can then adjust the pulse width by changing the phase of one of the oscillators."
+  },
+  "osc_a2_note": {
+    "name": "osc_a2_note",
+    "type": "enum",
+    "min": "-7",
+    "max": "7",
+    "options": [
+        "-7",
+        "-6",
+        "-5",
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+    ],
+    "description": "Tune the voices of Oscillator A2 to another specific note"
+  },
+  "osc_a2_octave": {
+    "name": "osc_a2_octave",
+    "type": "enum",
+    "min": "-3",
+    "max": "3",
+    "options": [
+        "-3",
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3"
+    ],
+    "description": "Tune the voices of Oscillator A2 to another specific octave"
+  },
+  "osc_a2_pan": {
+    "name": "osc_a2_pan",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Pans the output of Oscillator A2 to the left (-10) or right (10) channel."
+  },
+  "osc_a2_phase_deg": {
+    "name": "osc_a2_phase_deg",
+    "type": "float",
+    "min": 0.0,
+    "max": 360.0,
+    "description": "This knob will change the starting point of Oscillator A2's waveform. It will only function when Retrigger is enabled."
+  },
+  "osc_a2_retrigger": {
+      "name": "osc_a2_retrigger",
+      "type": "bool",
+      "options": ["True", "False"],
+      "description": "The Retrigger button can be used to force all of Oscillator A2's voices to start at the exact same location on the waveform every time a new note is played (Boolean False=Off, True=On). That location can be changed using the Phase knob. If Phase is set to 0, the voices will restart at the beginning of the waveform period. If it is set to 180 degrees, the voices will start halfway the period, while setting it to 360 degrees will make them start at the end of the waveform, which is equivalent to the beginning."
+  },
+  "osc_a2_stereo": {
+    "name": "osc_a2_stereo",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Sets the level of stereo separation between Oscillator A2's individual voices. If set to 0 it will generate a mono sound, if set to 10 the voices will be fully spread over the left and right channels. This only has effect if there are more than 1 voices."
+  },
+  "osc_a2_voices": {
+    "name": "osc_a2_voices",
+    "type": "enum",
+    "min": "0",
+    "max": "8",
+    "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+    ],
+    "description": "Voices Parameter for Oscillator A2"
+  },
+  "osc_a2_volume": {
+    "name": "osc_a2_volume",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Sets the output volume of Oscillator A2"
+  },
+  "osc_a2_waveform": {
+    "name": "osc_a2_waveform",
+    "type": "enum",
+    "options": [
+        "Sine",
+        "Saw",
+        "Triangle",
+        "Pulse",
+        "HPulse",
+        "QPulse",
+        "TriSaw",
+        "Noise"
+      ],
+    "description": "Type of Waveform for Oscillator A2"
+  },
+  "osc_b1_detune": {
+    "name": "osc_b1_detune",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Detune Parameter for Oscillator B1"
+  },
+  "osc_b1_fine": {
+    "name": "osc_b1_fine",
+    "type": "float",
+    "min": -1.000,
+    "max": 1.000,
+    "description": "Pitch can be fine-tuned between two half notes for Oscillator B1"
+  },
+  "osc_b1_invert": {
+      "name": "osc_b1_invert",
+      "type": "bool",
+      "options": ["True", "False"],
+      "description": "The Oscillator B1 Invert button inverts the Oscillator B1’s output (Boolean False=Off, True=On). This can be useful when creating PWM-like sound effects. For example, if you add two saw oscillators and invert one of them, the resulting waveform will be a pulse. You can then adjust the pulse width by changing the phase of one of the oscillators."
+  },
+  "osc_b1_note": {
+    "name": "osc_b1_note",
+    "type": "enum",
+    "min": "-7",
+    "max": "7",
+    "options": [
+        "-7",
+        "-6",
+        "-5",
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+    ],
+    "description": "Tune the voices of Oscillator B1 to another specific note"
+  },
+  "osc_b1_octave": {
+    "name": "osc_b1_octave",
+    "type": "enum",
+    "min": "-3",
+    "max": "3",
+    "options": [
+        "-3",
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3"
+    ],
+    "description": "Tune the voices of Oscillator B1 to another specific octave"
+  },
+  "osc_b1_pan": {
+    "name": "osc_b1_pan",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Pans the output of Oscillator B1 to the left (-10) or right (10) channel."
+  },
+  "osc_b1_phase_deg": {
+    "name": "osc_b1_phase_deg",
+    "type": "float",
+    "min": 0.0,
+    "max": 360.0,
+    "description": "This knob will change the starting point of Oscillator B1's waveform. It will only function when Retrigger is enabled."
+  },
+  "osc_b1_retrigger": {
+      "name": "osc_b1_retrigger",
+      "type": "bool",
+      "options": ["True", "False"],
+      "description": "The Retrigger button can be used to force all of Oscillator B1's voices to start at the exact same location on the waveform every time a new note is played (Boolean False=Off, True=On). That location can be changed using the Phase knob. If Phase is set to 0, the voices will restart at the beginning of the waveform period. If it is set to 180 degrees, the voices will start halfway the period, while setting it to 360 degrees will make them start at the end of the waveform, which is equivalent to the beginning."
+  },
+  "osc_b1_stereo": {
+    "name": "osc_b1_stereo",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Sets the level of stereo separation between Oscillator B1's individual voices. If set to 0 it will generate a mono sound, if set to 10 the voices will be fully spread over the left and right channels. This only has effect if there are more than 1 voices."
+  },
+  "osc_b1_voices": {
+    "name": "osc_b1_voices",
+    "type": "enum",
+    "min": "0",
+    "max": "8",
+    "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+    ],
+    "description": "Voices Parameter for Oscillator B1"
+  },
+  "osc_b1_volume": {
+    "name": "osc_b1_volume",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Sets the output volume of Oscillator B1"
+  },
+  "osc_b1_waveform": {
+    "name": "osc_b1_waveform",
+    "type": "enum",
+    "options": [
+      "Sine",
+      "Saw",
+      "Triangle",
+      "Pulse",
+      "HPulse",
+      "QPulse",
+      "TriSaw",
+      "Noise"
+    ],
+    "description": "Type of Waveform for Oscillator B1"
+  },
+  "osc_b2_detune": {
+    "name": "osc_b2_detune",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Detune Parameter for Oscillator B2"
+  },
+  "osc_b2_fine": {
+    "name": "osc_b2_fine",
+    "type": "float",
+    "min": -1.000,
+    "max": 1.000,
+    "description": "Pitch can be fine-tuned between two half notes for Oscillator B2"
+  },
+  "osc_b2_invert": {
+      "name": "osc_b2_invert",
+      "type": "bool",
+      "options": ["True", "False"],
+      "description": "The Oscillator B2 Invert button inverts the Oscillator B2’s output (Boolean False=Off, True=On). This can be useful when creating PWM-like sound effects. For example, if you add two saw oscillators and invert one of them, the resulting waveform will be a pulse. You can then adjust the pulse width by changing the phase of one of the oscillators."
+  },
+  "osc_b2_note": {
+    "name": "osc_b2_note",
+    "type": "enum",
+    "min": "-7",
+    "max": "7",
+    "options": [
+        "-7",
+        "-6",
+        "-5",
+        "-4",
+        "-3",
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+    ],
+    "description": "Tune the voices of Oscillator B2 to another specific note"
+  },
+  "osc_b2_octave": {
+    "name": "osc_b2_octave",
+    "type": "enum",
+    "min": "-3",
+    "max": "3",
+    "options": [
+        "-3",
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3"
+    ],
+    "description": "Tune the voices of Oscillator B2 to another specific octave"
+  },
+  "osc_b2_pan": {
+    "name": "osc_b2_pan",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Pans the output of Oscillator B2 to the left (-10) or right (10) channel."
+  },
+  "osc_b2_phase_deg": {
+    "name": "osc_b2_phase_deg",
+    "type": "float",
+    "min": 0.0,
+    "max": 360.0,
+    "description": "This knob will change the starting point of Oscillator B2's waveform. It will only function when Retrigger is enabled."
+  },
+  "osc_b2_retrigger": {
+      "name": "osc_b2_retrigger",
+      "type": "bool",
+      "options": ["True", "False"],
+      "description": "The Retrigger button can be used to force all of Oscillator B2's voices to start at the exact same location on the waveform every time a new note is played (Boolean False=Off, True=On). That location can be changed using the Phase knob. If Phase is set to 0, the voices will restart at the beginning of the waveform period. If it is set to 180 degrees, the voices will start halfway the period, while setting it to 360 degrees will make them start at the end of the waveform, which is equivalent to the beginning."
+  },
+  "osc_b2_stereo": {
+    "name": "osc_b2_stereo",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Sets the level of stereo separation between Oscillator B2's individual voices. If set to 0 it will generate a mono sound, if set to 10 the voices will be fully spread over the left and right channels. This only has effect if there are more than 1 voices."
+  },
+  "osc_b2_voices": {
+    "name": "osc_b2_voices",
+    "type": "enum",
+    "min": "0",
+    "max": "8",
+    "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+    ],
+    "description": "Voices Parameter for Oscillator B2"
+  },
+  "osc_b2_volume": {
+    "name": "osc_b2_volume",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Sets the output volume of Oscillator B2"
+  },
+  "osc_b2_waveform": {
+    "name": "osc_b2_waveform",
+    "type": "enum",
+    "options": [
+        "Sine",
+        "Saw",
+        "Triangle",
+        "Pulse",
+        "HPulse",
+        "QPulse",
+        "TriSaw",
+        "Noise"
+      ],
+    "description": "Type of Waveform for Oscillator B2"
+  },
+  "mix_a": {
+    "name": "mix_a",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Volume for Oscillator A"
+  },
+  "mix_b": {
+    "name": "mix_b",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Volume for Oscillator B"
+  },
+  "reverb_damp": {
+    "name": "reverb_damp",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Damp Parameter for the Reverb Effect"
+  },
+  "reverb_dry_wet": {
+    "name": "reverb_dry_wet",
+    "label": "%",
+    "type": "float",
+    "min": 0.00,
+    "max": 100.00,
+    "description": "Dry/Wet Parameter for the Reverb Effect"
+  },
+  "reverb_predelay_ms": {
+    "name": "reverb_predelay_ms",
+    "label": "ms",
+    "type": "float",
+    "min": 0.00,
+    "max": 200.00,
+    "description": "Pre-Delay Parameter for the Reverb Effect"
+  },
+  "reverb_size": {
+    "name": "reverb_size",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Size Parameter for the Reverb Effect"
+  },
+  "reverb_width": {
+    "name": "reverb_width",
+    "label": "%",
+    "type": "float",
+    "min": 0.00,
+    "max": 100.00,
+    "description": "Width Parameter for the Reverb Effect"
+  },
+  "sw_reverbonoff": {
+    "name": "sw_reverbonoff",
+    "type": "bool",
+    "options": ["True", "False"],
+    "description": "The On/Off Switch for the Reverb Effect (Boolean False=Off, True=On)"
+  },
+  "chorus_delay_ms": {
+    "name": "chorus_delay_ms",
+    "label": "ms",
+    "type": "float",
+    "min": 1.000,
+    "max": 40.000,
+    "description": "Delay Parameter for the Chorus Effect"
+  },
+  "chorus_depth": {
+    "name": "chorus_depth",
+    "label": "%",
+    "type": "float",
+    "min": 0.00,
+    "max": 100.00,
+    "description": "Depth Parameter for the Chorus Effect"
+  },
+  "chorus_dry_wet": {
+    "name": "chorus_dry_wet",
+    "label": "%",
+    "type": "float",
+    "min": 0.00,
+    "max": 100.00,
+    "description": "Dry/Wet Parameter for the Chorus Effect"
+  },
+  "chorus_feedback": {
+    "name": "chorus_feedback",
+    "label": "%",
+    "type": "float",
+    "min": 0.00,
+    "max": 100.00,
+    "description": "Feedback Parameter for the Chorus Effect"
+  },
+  "chorus_mode": {
+    "name": "chorus_mode",
+    "type": "enum",
+    "options": [
+        "Dual",
+        "Single"
+      ],
+    "description": "The mode of the Chorus effect"
+  },
+  "chorus_rate_hz": {
+    "name": "chorus_rate_hz",
+    "label": "Hz",
+    "type": "float",
+    "min": 0.013,
+    "max": 27.500,
+    "description": "Rate Parameter for the Chorus Effect"
+  },
+  "chorus_width": {
+    "name": "chorus_width",
+    "label": "%",
+    "type": "float",
+    "min": 0.00,
+    "max": 100.00,
+    "description": "Width Parameter for the Chorus Effect"
+  },
+  "sw_chorusonoff": {
+      "name": "sw_chorusonoff",
+      "type": "bool",
+      "options": ["True", "False"],
+      "description": "The On/Off Switch for the Chorus Effect (Boolean False=Off, True=On)"
+  },
+  "comp_attack_ms": {
+    "name": "comp_attack_ms",
+    "label": "ms",
+    "type": "float",
+    "min": 0.10,
+    "max": 300.00,
+    "description": "Attack Parameter for the Compressor Effect"
+  },
+  "comp_ratio": {
+    "name": "comp_ratio",
+    "type": "enum",
+    "min": "1.000:1",
+    "max": "100.000:1",
+    "options": [
+      "1.000:1",
+      "1.100:1",
+      "1.200:1",
+      "1.300:1",
+      "1.400:1",
+      "1.500:1",
+      "1.600:1",
+      "1.700:1",
+      "1.800:1",
+      "1.900:1",
+      "2.000:1",
+      "2.100:1",
+      "2.200:1",
+      "2.300:1",
+      "2.400:1",
+      "2.500:1",
+      "2.600:1",
+      "2.700:1",
+      "2.800:1",
+      "2.900:1",
+      "3.000:1",
+      "3.100:1",
+      "3.200:1",
+      "3.300:1",
+      "3.400:1",
+      "3.500:1",
+      "3.600:1",
+      "3.700:1",
+      "3.800:1",
+      "3.900:1",
+      "4.000:1",
+      "4.500:1",
+      "5.000:1",
+      "6.000:1",
+      "7.000:1",
+      "8.000:1",
+      "9.000:1",
+      "10.000:1",
+      "50.000:1",
+      "100.000:1"
+    ],
+    "description": "Ratio Parameter for the Compressor Effect"
+  },
+  "comp_release_ms": {
+    "name": "comp_release_ms",
+    "label": "ms",
+    "type": "float",
+    "min": 1.00,
+    "max": 500.00,
+    "description": "Release Parameter for the Compressor Effect"
+  },
+  "comp_threshold_db": {
+    "name": "comp_threshold_db",
+    "label": "dB",
+    "type": "float",
+    "min": 0.000,
+    "max": -30.000,
+    "description": "Threshold Parameter for the Compressor Effect"
+  },
+  "sw_componoff": {
+      "name": "sw_componoff",
+      "type": "bool",
+      "options": ["True", "False"],
+      "description": "The On/Off Switch for the Compressor Effect (Boolean False=Off, True=On)"
+  },
+  "delay_dry_wet": {
+    "name": "delay_dry_wet",
+    "label": "%",
+    "type": "float",
+    "min": 0.00,
+    "max": 100.00,
+    "description": "Dry/Wet Parameter for the Delay Effect"
+  },
+  "delay_feedback": {
+    "name": "delay_feedback",
+    "label": "%",
+    "type": "float",
+    "min": 0.00,
+    "max": 100.00,
+    "description": "Feedback Parameter for the Delay Effect"
+  },
+  "delay_highcut_hz": {
+    "name": "delay_highcut_hz",
+    "label": "Hz",
+    "type": "float",
+    "min": 21120.00,
+    "max": 82.50,
+    "description": "HighCut Parameter for the Delay Effect"
+  },
+  "delay_lowcut_hz": {
+    "name": "delay_lowcut_hz",
+    "label": "Hz",
+    "type": "float",
+    "min": 3.23,
+    "max": 26483.12,
+    "description": "LowCut Parameter for the Delay Effect"
+  },
+  "delay_pingpong": {
+      "name": "delay_pingpong",
+      "type": "bool",
+      "options": ["True", "False"],
+      "description": "The On/Off Switch for PingPong mode on the Delay Effect (Boolean False=Off, True=On)"
+  },
+  "delay_smear": {
+    "name": "delay_smear",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Smear Parameter for the Delay Effect"
+  },
+  "delay_spread": {
+    "name": "delay_spread",
+    "label": "%",
+    "type": "float",
+    "min": 0.00,
+    "max": 100.00,
+    "description": "Spread Parameter for the Delay Effect"
+  },
+  "delay_time_left": {
+    "name": "delay_time_left",
+    "type": "enum",
+    "min": "1/64",
+    "max": "1/2",
+    "options": [
+      "1/64",
+      "1/32T",
+      "1/64D",
+      "1/32",
+      "1/16T",
+      "1/32D",
+      "1/16",
+      "1/8T",
+      "1/16D",
+      "1/8",
+      "1/4T",
+      "1/8D",
+      "1/4",
+      "1/2T",
+      "1/4D",
+      "1/2"
+    ],
+    "description": "Delay Time Parameter on the Left Side for the Delay Effect"
+  },
+  "delay_time_right": {
+    "name": "delay_time_right",
+    "type": "enum",
+    "min": "1/64",
+    "max": "1/2",
+    "options": [
+      "1/64",
+      "1/32T",
+      "1/64D",
+      "1/32",
+      "1/16T",
+      "1/32D",
+      "1/16",
+      "1/8T",
+      "1/16D",
+      "1/8",
+      "1/4T",
+      "1/8D",
+      "1/4",
+      "1/2T",
+      "1/4D",
+      "1/2"
+    ],
+    "description": "Delay Time Parameter on the Right Side for the Delay Effect"
+  },
+  "delay_width": {
+    "name": "delay_width",
+    "label": "%",
+    "type": "float",
+    "min": 0.00,
+    "max": 100.00,
+    "description": "Width Parameter for the Delay Effect"
+  },
+  "sw_delayonoff": {
+      "name": "sw_delayonoff",
+      "type": "bool",
+      "options": ["True", "False"],
+      "description": "The On/Off Switch for the Delay Effect (Boolean False=Off, True=On)"
+  },
+  "distort_amount": {
+    "name": "distort_amount",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Amount Parameter for the Distortion Effect"
+  },
+  "distort_drywet": {
+    "name": "distort_drywet",
+    "label": "%",
+    "type": "float",
+    "min": 0.00,
+    "max": 100.00,
+    "description": "Dry/Wet Parameter for the Distortion Effect"
+  },
+  "distort_type": {
+    "name": "distort_type",
+    "type": "enum",
+    "options": [
+      "OverDrv",
+      "FoldBack",
+      "Clip",
+      "Decimate",
+      "BitCrush"
+    ],
+    "description": "Type of Distortion for the Distortion Effect"
+  },
+  "sw_distonoff": {
+      "name": "sw_distonoff",
+      "type": "bool",
+      "options": ["True", "False"],
+      "description": "The On/Off Switch for the Distortion Effect (Boolean False=Off, True=On)"
+  },
+  "eq_bass_db": {
+    "name": "eq_bass_db",
+    "label": "dB",
+    "type": "float",
+    "min": 0.000,
+    "max": 15.000,
+    "description": "Level of Bass EQ for the EQ Effect"
+  },
+  "eq_bass_freq_hz": {
+    "name": "eq_bass_freq_hz",
+    "label": "Hz",
+    "type": "float",
+    "min": 13.75,
+    "max": 880.00,
+    "description": "Frequency of Bass EQ for the EQ Effect"
+  },
+  "eq_treble_db": {
+    "name": "eq_treble_db",
+    "label": "dB",
+    "type": "float",
+    "min": 0.000,
+    "max": 15.000,
+    "description": "Level of Treble EQ for the EQ Effect"
+  },
+  "eq_treble_freq_hz": {
+    "name": "eq_treble_freq_hz",
+    "label": "Hz",
+    "type": "float",
+    "min": 440.00,
+    "max": 28160.00,
+    "description": "Frequency of Treble EQ for the EQ Effect"
+  },
+  "eq_mode": {
+    "name": "eq_mode",
+    "type": "enum",
+    "options": [
+        "1-Pole",
+        "2-Pole"
+    ],
+    "description": "Determines the type of EQ slope applied. A 1-pole EQ plugin has a gentle, natural roll-off of 6dB per octave, while a 2-pole plugin has a steeper 12dB per octave roll-off."
+  },
+  "sw_eqonoff": {
+      "name": "sw_eqonoff",
+      "type": "bool",
+      "options": ["True", "False"],
+      "description": "The On/Off Switch for the EQ Effect (Boolean False=Off, True=On)"
+  },
+  "filter_a_cutoff": {
+    "name": "filter_a_cutoff",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Cutoff Parameter in the Filter for Oscillator A"
+  },
+  "filter_a_drive": {
+    "name": "filter_a_drive",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Drive Parameter in the Filter for Oscillator A"
+  },
+  "filter_a_input": {
+    "name": "filter_a_input",
+    "type": "enum",
+    "options": [
+      "A",
+      "A and B",
+      "None"
+    ],
+    "description": "Input for the Filter for Oscillator A"
+  },
+  "filter_a_reso": {
+    "name": "filter_a_reso",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Resonance Parameter in the Filter for Oscillator A"
+  },
+  "filter_a_type": {
+    "name": "filter_a_type",
+    "type": "enum",
+    "options": [
+      "Lowpass",
+      "Highpass",
+      "Bandpass",
+      "Bypass"
+    ],
+    "description": "Type of Filter for Oscillator A"
+  },
+  "filter_a_db_db": {
+    "name": "filter_a_db_db",
+    "type": "enum",
+    "options": [
+      "12.0",
+      "24.0"
+    ],
+    "description": "The attenuation for Filter A, which can be switched between 12dB per octave or 24dB per octave."
+  },
+  "filter_b_cutoff": {
+    "name": "filter_b_cutoff",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Cutoff Parameter in the Filter for Oscillator B"
+  },
+  "filter_b_drive": {
+    "name": "filter_b_drive",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Drive Parameter in the Filter for Oscillator B"
+  },
+  "filter_b_input": {
+    "name": "filter_b_input",
+    "type": "enum",
+    "options": [
+      "B",
+      "B and A",
+      "None"
+    ],
+    "description": "Input for the Filter for Oscillator B"
+  },
+  "filter_b_reso": {
+    "name": "filter_b_reso",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Resonance Parameter in the Filter for Oscillator B"
+  },
+  "filter_b_type": {
+    "name": "filter_b_type",
+    "type": "enum",
+    "options": [
+      "Lowpass",
+      "Highpass",
+      "Bandpass",
+      "Bypass"
+    ],
+    "description": "Type of Filter for Oscillator B"
+  },
+  "filter_b_db_db": {
+    "name": "filter_b_db_db",
+    "type": "enum",
+    "options": [
+      "12.0",
+      "24.0"
+    ],
+    "description": "The attenuation for Filter B, which can be switched between 12dB per octave or 24dB per octave."
+  },
+  "filterctl_cutoff": {
+    "name": "filterctl_cutoff",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Cutoff Parameter in the Overall Control Filter"
+  },
+  "filterctl_keytrk": {
+    "name": "filterctl_keytrk",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "When this knob is set to 0, the cutoff frequency will not depend on the note played. However, when this knob is set to 10, the cutoff frequency will change with the pitch of the note played. This enables you to keep (or change) the timbre of a sound whenever higher or lower notes are played."
+  },
+  "filterctl_reso": {
+    "name": "filterctl_reso",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Resonance Parameter in the Overall Control Filter"
+  },
+  "filterctl_warmdrive": {
+      "name": "filterctl_warmdrive",
+      "type": "bool",
+      "options": ["True", "False"],
+      "description": "The On/Off Switch for the WarmDrive Effect in the Overall Control Filter (Boolean False=Off, True=On)"
+  },
+  "lfo_1_gain": {
+    "name": "lfo_1_gain",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "The LFO 1 Gain knob changes the amplitude of LFO 1"
+  },
+  "lfo_1_offset": {
+    "name": "lfo_1_offset",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "The LFO Offset 1 knob can be used to add a positive or negative constant value to output of LFO 1"
+  },
+  "lfo_1_rate": {
+    "name": "lfo_1_rate",
+    "type": "enum",
+    "min": "8/1D",
+    "max": "1/256T",
+    "options": [
+      "8/1D",
+      "8/1",
+      "4/1D",
+      "8/1T",
+      "4/1",
+      "2/1D",
+      "4/1T",
+      "2/1",
+      "1/1D",
+      "2/1T",
+      "1/1",
+      "1/2D",
+      "1/1T",
+      "1/2",
+      "1/4D",
+      "1/2T",
+      "1/4",
+      "1/8D",
+      "1/4T",
+      "1/8",
+      "1/16D",
+      "1/8T",
+      "1/16",
+      "1/32D",
+      "1/16T",
+      "1/32",
+      "1/64D",
+      "1/32T",
+      "1/64",
+      "1/128D",
+      "1/64T",
+      "1/128",
+      "1/256D",
+      "1/128T",
+      "1/256",
+      "1/256T"
+    ],
+    "description": "LFO 1 Rate Parameter"
+  },
+  "lfo_1_wave": {
+    "name": "lfo_1_wave",
+    "type": "enum",
+    "options": [
+        "Sine",
+        "Saw",
+        "Ramp",
+        "Triangle",
+        "Pulse",
+        "HPulse",
+        "QPulse",
+        "TriSaw",
+        "Lorenz",
+        "SmpHold",
+        "Random"
+      ],
+    "description": "Type of Waveform for LFO 1"
+  },
+  "lfo_2_gain": {
+    "name": "lfo_2_gain",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "The LFO 2 Gain knob changes the amplitude of LFO 2"
+  },
+  "lfo_2_offset": {
+    "name": "lfo_2_offset",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "The LFO Offset 2 knob can be used to add a positive or negative constant value to output of LFO 2"
+  },
+  "lfo_2_rate": {
+    "name": "lfo_2_rate",
+    "type": "enum",
+    "min": "8/1D",
+    "max": "1/256T",
+    "options": [
+      "8/1D",
+      "8/1",
+      "4/1D",
+      "8/1T",
+      "4/1",
+      "2/1D",
+      "4/1T",
+      "2/1",
+      "1/1D",
+      "2/1T",
+      "1/1",
+      "1/2D",
+      "1/1T",
+      "1/2",
+      "1/4D",
+      "1/2T",
+      "1/4",
+      "1/8D",
+      "1/4T",
+      "1/8",
+      "1/16D",
+      "1/8T",
+      "1/16",
+      "1/32D",
+      "1/16T",
+      "1/32",
+      "1/64D",
+      "1/32T",
+      "1/64",
+      "1/128D",
+      "1/64T",
+      "1/128",
+      "1/256D",
+      "1/128T",
+      "1/256",
+      "1/256T"
+    ],
+    "description": "LFO 2 Rate Parameter"
+  },
+  "lfo_2_wave": {
+    "name": "lfo_2_wave",
+    "type": "enum",
+    "options": [
+        "Sine",
+        "Saw",
+        "Ramp",
+        "Triangle",
+        "Pulse",
+        "HPulse",
+        "QPulse",
+        "TriSaw",
+        "Lorenz",
+        "SmpHold",
+        "Random"
+      ],
+    "description": "Type of Waveform for LFO 2"
+  },
+  "modenv_1_attack": {
+    "name": "modenv_1_attack",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "ADSR Envelope Attack for Modulator 1"
+  },
+  "modenv_1_decay": {
+    "name": "modenv_1_decay",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "ADSR Envelope Decay for Modulator 1"
+  },
+  "modenv_1_sustain": {
+    "name": "modenv_1_sustain",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "ADSR Envelope Sustain for Modulator 1"
+  },
+  "modenv_1_release": {
+    "name": "modenv_1_release",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "ADSR Envelope Release for Modulator 1"
+  },
+  "modenv_2_attack": {
+    "name": "modenv_2_attack",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "ADSR Envelope Attack for Modulator 2"
+  },
+  "modenv_2_decay": {
+    "name": "modenv_2_decay",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "ADSR Envelope Decay for Modulator 2"
+  },
+  "modenv_2_sustain": {
+    "name": "modenv_2_sustain",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "ADSR Envelope Sustain for Modulator 2"
+  },
+  "modenv_2_release": {
+    "name": "modenv_2_release",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "ADSR Envelope Release for Modulator 2"
+  },
+  "modwheel": {
+    "name": "modwheel",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "The modulation wheel can be used as a modulation source in the miscellaneous modulation panels for any type of modulation."
+  },
+  "mono_legato": {
+      "name": "mono_legato",
+      "type": "bool",
+      "options": ["True", "False"],
+      "description": "When the Mono Legato button is activated, Sylenth1 will be forced into mono mode and the polyphony setting on the top bar will be discarded. It will also stop retriggering notes whenever another key is pressed. This enables you to slide notes up and down in pitch and velocity without actually restarting a new note. (Boolean False=Off, True=On)."
+  },
+  "phaser_centerfreq": {
+    "name": "phaser_centerfreq",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Center Frequency Parameter for the Phaser Effect"
+  },
+  "phaser_dry_wet": {
+    "name": "phaser_dry_wet",
+    "label": "%",
+    "type": "float",
+    "min": 0.00,
+    "max": 100.00,
+    "description": "Dry/Wet Parameter for the Phaser Effect"
+  },
+  "phaser_feedback": {
+    "name": "phaser_feedback",
+    "label": "%",
+    "type": "float",
+    "min": 0.00,
+    "max": 100.00,
+    "description": "Feedback Parameter for the Phaser Effect"
+  },
+  "phaser_lfo_gain": {
+    "name": "phaser_lfo_gain",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "LFO Gain Parameter for the Phaser Effect"
+  },
+  "phaser_lfo_rate": {
+    "name": "phaser_lfo_rate",
+    "type": "enum",
+    "min": "8/1D",
+    "max": "1/256T",
+    "options": [
+      "8/1D",
+      "8/1",
+      "4/1D",
+      "8/1T",
+      "4/1",
+      "2/1D",
+      "4/1T",
+      "2/1",
+      "1/1D",
+      "2/1T",
+      "1/1",
+      "1/2D",
+      "1/1T",
+      "1/2",
+      "1/4D",
+      "1/2T",
+      "1/4",
+      "1/8D",
+      "1/4T",
+      "1/8",
+      "1/16D",
+      "1/8T",
+      "1/16",
+      "1/32D",
+      "1/16T",
+      "1/32",
+      "1/64D",
+      "1/32T",
+      "1/64",
+      "1/128D",
+      "1/64T",
+      "1/128",
+      "1/256D",
+      "1/128T",
+      "1/256",
+      "1/256T"
+    ],
+    "description": "LFO Rate Parameter for the Phaser Effect"
+  },
+  "phaser_lr_offset": {
+    "name": "phaser_lr_offset",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Left-Right Offset Parameter for the Phaser Effect"
+  },
+  "phaser_spread": {
+    "name": "phaser_spread",
+    "type": "float",
+    "min": 0.000,
+    "max": 10.000,
+    "description": "Spread Parameter for the Phaser Effect"
+  },
+  "phaser_width": {
+    "name": "phaser_width",
+    "label": "%",
+    "type": "float",
+    "min": 0.00,
+    "max": 100.00,
+    "description": "Width Parameter for the Phaser Effect"
+  },
+  "sw_phaseronoff": {
+      "name": "sw_phaseronoff",
+      "type": "bool",
+      "options": ["True", "False"],
+      "description": "The On/Off Switch for the Phaser Effect (Boolean False=Off, True=On)"
+  },
+  "polyphony": {
+    "name": "polyphony",
+    "type": "enum",
+    "min": "1",
+    "max": "16",
+    "options": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16"
+    ],
+    "description": "The maximum number of simultaneous notes that can be played in the Sylenth1 synthesiser at any one time"
+  },
+  "xmodenv1_dest1am": {
+    "name": "xmodenv1_dest1am",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Controls modulation amount for Modulation Envelope 1 Destination 1"
+  },
+  "xmodenv1_dest2am": {
+    "name": "xmodenv1_dest2am",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Controls modulation amount for Modulation Envelope 1 Destination 2"
+  },
+  "xmodenv2_dest1am": {
+    "name": "xmodenv2_dest1am",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Controls modulation amount for Modulation Envelope 2 Destination 1"
+  },
+  "xmodenv2_dest2am": {
+    "name": "xmodenv2_dest2am",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Controls modulation amount for Modulation Envelope 2 Destination 2"
+  },
+  "xmodlfo1_dest1am": {
+    "name": "xmodlfo1_dest1am",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Controls modulation amount for LFO 1 Destination 1"
+  },
+  "xmodlfo1_dest2am": {
+    "name": "xmodlfo1_dest2am",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Controls modulation amount for LFO 1 Destination 2"
+  },
+  "xmodlfo2_dest1am": {
+    "name": "xmodlfo2_dest1am",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Controls modulation amount for LFO 2 Destination 1"
+  },
+  "xmodlfo2_dest2am": {
+    "name": "xmodlfo2_dest2am",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Controls modulation amount for LFO 2 Destination 2"
+  },
+  "xmodmisc1a_dest1am": {
+    "name": "xmodmisc1a_dest1am",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Controls modulation amount for Miscellaneous Modulation Panel 1A Destination 1. The Miscellaneous Modulation panels allow you to choose other modulation sources, like velocity, aftertouch, keytrack, modwheel, the amplitude envelopes and the modulation envelopes and LFOs."
+  },
+  "xmodmisc1a_dest2am": {
+    "name": "xmodmisc1a_dest2am",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Controls modulation amount for Miscellaneous Modulation Panel 1A Destination 2. The Miscellaneous Modulation panels allow you to choose other modulation sources, like velocity, aftertouch, keytrack, modwheel, the amplitude envelopes and the modulation envelopes and LFOs."
+  },
+  "xmodmisc1a_source": {
+    "name": "xmodmisc1a_source",
+    "type": "enum",
+    "options": [
+        "None",
+        "Velocity",
+        "ModWheel",
+        "KeyTrack",
+        "AmpEnvA",
+        "AmpEnvB",
+        "ModEnv1",
+        "ModEnv2",
+        "LFO 1",
+        "LFO 2",
+        "Aftertch",
+        "StepVlty"
+    ],
+    "description": "Modulation Source for Miscellaneous Modulation Panel 1A"
+  },
+  "xmodmisc1b_dest1am": {
+    "name": "xmodmisc1b_dest1am",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Controls modulation amount for Miscellaneous Modulation Panel 1B Destination 1. The Miscellaneous Modulation panels allow you to choose other modulation sources, like velocity, aftertouch, keytrack, modwheel, the amplitude envelopes and the modulation envelopes and LFOs."
+  },
+  "xmodmisc1b_dest2am": {
+    "name": "xmodmisc1b_dest2am",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Controls modulation amount for Miscellaneous Modulation Panel 1B Destination 2. The Miscellaneous Modulation panels allow you to choose other modulation sources, like velocity, aftertouch, keytrack, modwheel, the amplitude envelopes and the modulation envelopes and LFOs."
+  },
+  "xmodmisc1b_source": {
+    "name": "xmodmisc1b_source",
+    "type": "enum",
+    "options": [
+        "None",
+        "Velocity",
+        "ModWheel",
+        "KeyTrack",
+        "AmpEnvA",
+        "AmpEnvB",
+        "ModEnv1",
+        "ModEnv2",
+        "LFO 1",
+        "LFO 2",
+        "Aftertch",
+        "StepVlty"
+    ],
+    "description": "Modulation Source for Miscellaneous Modulation Panel 1B"
+  },
+  "xmodmisc2a_dest1am": {
+    "name": "xmodmisc2a_dest1am",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Controls modulation amount for Miscellaneous Modulation Panel 2A Destination 1. The Miscellaneous Modulation panels allow you to choose other modulation sources, like velocity, aftertouch, keytrack, modwheel, the amplitude envelopes and the modulation envelopes and LFOs."
+  },
+  "xmodmisc2a_dest2am": {
+    "name": "xmodmisc2a_dest2am",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Controls modulation amount for Miscellaneous Modulation Panel 2A Destination 2. The Miscellaneous Modulation panels allow you to choose other modulation sources, like velocity, aftertouch, keytrack, modwheel, the amplitude envelopes and the modulation envelopes and LFOs."
+  },
+  "xmodmisc2a_source": {
+    "name": "xmodmisc2a_source",
+    "type": "enum",
+    "options": [
+        "None",
+        "Velocity",
+        "ModWheel",
+        "KeyTrack",
+        "AmpEnvA",
+        "AmpEnvB",
+        "ModEnv1",
+        "ModEnv2",
+        "LFO 1",
+        "LFO 2",
+        "Aftertch",
+        "StepVlty"
+    ],
+    "description": "Modulation Source for Miscellaneous Modulation Panel 2A"
+  },
+  "xmodmisc2b_dest1am": {
+    "name": "xmodmisc2b_dest1am",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Controls modulation amount for Miscellaneous Modulation Panel 2B Destination 1. The Miscellaneous Modulation panels allow you to choose other modulation sources, like velocity, aftertouch, keytrack, modwheel, the amplitude envelopes and the modulation envelopes and LFOs."
+  },
+  "xmodmisc2b_dest2am": {
+    "name": "xmodmisc2b_dest2am",
+    "type": "float",
+    "min": -10.000,
+    "max": 10.000,
+    "description": "Controls modulation amount for Miscellaneous Modulation Panel 2B Destination 2. The Miscellaneous Modulation panels allow you to choose other modulation sources, like velocity, aftertouch, keytrack, modwheel, the amplitude envelopes and the modulation envelopes and LFOs."
+  },
+  "xmodmisc2b_source": {
+    "name": "xmodmisc2b_source",
+    "type": "enum",
+    "options": [
+        "None",
+        "Velocity",
+        "ModWheel",
+        "KeyTrack",
+        "AmpEnvA",
+        "AmpEnvB",
+        "ModEnv1",
+        "ModEnv2",
+        "LFO 1",
+        "LFO 2",
+        "Aftertch",
+        "StepVlty"
+    ],
+    "description": "Modulation Source for Miscellaneous Modulation Panel 2B"
+  },
+  "ymodenv1_dest1": {
+    "name": "ymodenv1_dest1",
+    "type": "enum",
+    "options": [
+        "None",
+        "Volume A",
+        "Volume B",
+        "VolumeAB",
+        "Pitch A",
+        "Pitch B",
+        "Pitch AB",
+        "Phase A",
+        "Phase B",
+        "Phase AB",
+        "Pan A",
+        "Pan B",
+        "Pan AB",
+        "Cutoff A",
+        "Cutoff B",
+        "CutoffAB",
+        "Reso A",
+        "Reso B",
+        "Reso AB",
+        "PhsrFreq",
+        "Mix A",
+        "Mix B",
+        "Mix AB",
+        "LFO1Rate",
+        "LFO1Gain",
+        "LFO2Rate",
+        "LFO2Gain",
+        "DistAmnt"
+    ],
+    "description": "Destination 1 for Modulation Envelope 1"
+  },
+  "ymodenv1_dest2": {
+    "name": "ymodenv1_dest2",
+    "type": "enum",
+    "options": [
+        "None",
+        "Volume A",
+        "Volume B",
+        "VolumeAB",
+        "Pitch A",
+        "Pitch B",
+        "Pitch AB",
+        "Phase A",
+        "Phase B",
+        "Phase AB",
+        "Pan A",
+        "Pan B",
+        "Pan AB",
+        "Cutoff A",
+        "Cutoff B",
+        "CutoffAB",
+        "Reso A",
+        "Reso B",
+        "Reso AB",
+        "PhsrFreq",
+        "Mix A",
+        "Mix B",
+        "Mix AB",
+        "LFO1Rate",
+        "LFO1Gain",
+        "LFO2Rate",
+        "LFO2Gain",
+        "DistAmnt"
+    ],
+    "description": "Destination 2 for Modulation Envelope 1"
+  },
+  "ymodenv2_dest1": {
+    "name": "ymodenv2_dest1",
+    "type": "enum",
+    "options": [
+        "None",
+        "Volume A",
+        "Volume B",
+        "VolumeAB",
+        "Pitch A",
+        "Pitch B",
+        "Pitch AB",
+        "Phase A",
+        "Phase B",
+        "Phase AB",
+        "Pan A",
+        "Pan B",
+        "Pan AB",
+        "Cutoff A",
+        "Cutoff B",
+        "CutoffAB",
+        "Reso A",
+        "Reso B",
+        "Reso AB",
+        "PhsrFreq",
+        "Mix A",
+        "Mix B",
+        "Mix AB",
+        "LFO1Rate",
+        "LFO1Gain",
+        "LFO2Rate",
+        "LFO2Gain",
+        "DistAmnt"
+    ],
+    "description": "Destination 1 for Modulation Envelope 2"
+  },
+  "ymodenv2_dest2": {
+    "name": "ymodenv2_dest2",
+    "type": "enum",
+    "options": [
+        "None",
+        "Volume A",
+        "Volume B",
+        "VolumeAB",
+        "Pitch A",
+        "Pitch B",
+        "Pitch AB",
+        "Phase A",
+        "Phase B",
+        "Phase AB",
+        "Pan A",
+        "Pan B",
+        "Pan AB",
+        "Cutoff A",
+        "Cutoff B",
+        "CutoffAB",
+        "Reso A",
+        "Reso B",
+        "Reso AB",
+        "PhsrFreq",
+        "Mix A",
+        "Mix B",
+        "Mix AB",
+        "LFO1Rate",
+        "LFO1Gain",
+        "LFO2Rate",
+        "LFO2Gain",
+        "DistAmnt"
+    ],
+    "description": "Destination 2 for Modulation Envelope 2"
+  },
+  "ymodlfo1_dest1": {
+    "name": "ymodlfo1_dest1",
+    "type": "enum",
+    "options": [
+        "None",
+        "Volume A",
+        "Volume B",
+        "VolumeAB",
+        "Pitch A",
+        "Pitch B",
+        "Pitch AB",
+        "Phase A",
+        "Phase B",
+        "Phase AB",
+        "Pan A",
+        "Pan B",
+        "Pan AB",
+        "Cutoff A",
+        "Cutoff B",
+        "CutoffAB",
+        "Reso A",
+        "Reso B",
+        "Reso AB",
+        "PhsrFreq",
+        "Mix A",
+        "Mix B",
+        "Mix AB",
+        "LFO1Rate",
+        "LFO1Gain",
+        "LFO2Rate",
+        "LFO2Gain",
+        "DistAmnt"
+    ],
+    "description": "Destination 1 for LFO 1"
+  },
+  "ymodlfo1_dest2": {
+    "name": "ymodlfo1_dest2",
+    "type": "enum",
+    "options": [
+        "None",
+        "Volume A",
+        "Volume B",
+        "VolumeAB",
+        "Pitch A",
+        "Pitch B",
+        "Pitch AB",
+        "Phase A",
+        "Phase B",
+        "Phase AB",
+        "Pan A",
+        "Pan B",
+        "Pan AB",
+        "Cutoff A",
+        "Cutoff B",
+        "CutoffAB",
+        "Reso A",
+        "Reso B",
+        "Reso AB",
+        "PhsrFreq",
+        "Mix A",
+        "Mix B",
+        "Mix AB",
+        "LFO1Rate",
+        "LFO1Gain",
+        "LFO2Rate",
+        "LFO2Gain",
+        "DistAmnt"
+    ],
+    "description": "Destination 2 for LFO 1"
+  },
+  "ymodlfo2_dest1": {
+    "name": "ymodlfo2_dest1",
+    "type": "enum",
+    "options": [
+        "None",
+        "Volume A",
+        "Volume B",
+        "VolumeAB",
+        "Pitch A",
+        "Pitch B",
+        "Pitch AB",
+        "Phase A",
+        "Phase B",
+        "Phase AB",
+        "Pan A",
+        "Pan B",
+        "Pan AB",
+        "Cutoff A",
+        "Cutoff B",
+        "CutoffAB",
+        "Reso A",
+        "Reso B",
+        "Reso AB",
+        "PhsrFreq",
+        "Mix A",
+        "Mix B",
+        "Mix AB",
+        "LFO1Rate",
+        "LFO1Gain",
+        "LFO2Rate",
+        "LFO2Gain",
+        "DistAmnt"
+    ],
+    "description": "Destination 1 for LFO 2"
+  },
+  "ymodlfo2_dest2": {
+    "name": "ymodlfo2_dest2",
+    "type": "enum",
+    "options": [
+        "None",
+        "Volume A",
+        "Volume B",
+        "VolumeAB",
+        "Pitch A",
+        "Pitch B",
+        "Pitch AB",
+        "Phase A",
+        "Phase B",
+        "Phase AB",
+        "Pan A",
+        "Pan B",
+        "Pan AB",
+        "Cutoff A",
+        "Cutoff B",
+        "CutoffAB",
+        "Reso A",
+        "Reso B",
+        "Reso AB",
+        "PhsrFreq",
+        "Mix A",
+        "Mix B",
+        "Mix AB",
+        "LFO1Rate",
+        "LFO1Gain",
+        "LFO2Rate",
+        "LFO2Gain",
+        "DistAmnt"
+    ],
+    "description": "Destination 2 for LFO 2"
+  },
+  "ymodmisc1a_dest1": {
+    "name": "ymodmisc1a_dest1",
+    "type": "enum",
+    "options": [
+        "None",
+        "Volume A",
+        "Volume B",
+        "VolumeAB",
+        "Pitch A",
+        "Pitch B",
+        "Pitch AB",
+        "Phase A",
+        "Phase B",
+        "Phase AB",
+        "Pan A",
+        "Pan B",
+        "Pan AB",
+        "Cutoff A",
+        "Cutoff B",
+        "CutoffAB",
+        "Reso A",
+        "Reso B",
+        "Reso AB",
+        "PhsrFreq",
+        "Mix A",
+        "Mix B",
+        "Mix AB",
+        "LFO1Rate",
+        "LFO1Gain",
+        "LFO2Rate",
+        "LFO2Gain",
+        "DistAmnt"
+    ],
+    "description": "Destination 1 for Miscellaneous Modulation Panel 1A"
+  },
+  "ymodmisc1a_dest2": {
+    "name": "ymodmisc1a_dest2",
+    "type": "enum",
+    "options": [
+        "None",
+        "Volume A",
+        "Volume B",
+        "VolumeAB",
+        "Pitch A",
+        "Pitch B",
+        "Pitch AB",
+        "Phase A",
+        "Phase B",
+        "Phase AB",
+        "Pan A",
+        "Pan B",
+        "Pan AB",
+        "Cutoff A",
+        "Cutoff B",
+        "CutoffAB",
+        "Reso A",
+        "Reso B",
+        "Reso AB",
+        "PhsrFreq",
+        "Mix A",
+        "Mix B",
+        "Mix AB",
+        "LFO1Rate",
+        "LFO1Gain",
+        "LFO2Rate",
+        "LFO2Gain",
+        "DistAmnt"
+    ],
+    "description": "Destination 2 for Miscellaneous Modulation Panel 1A"
+  },
+  "ymodmisc1b_dest1": {
+    "name": "ymodmisc1b_dest1",
+    "type": "enum",
+    "options": [
+        "None",
+        "Volume A",
+        "Volume B",
+        "VolumeAB",
+        "Pitch A",
+        "Pitch B",
+        "Pitch AB",
+        "Phase A",
+        "Phase B",
+        "Phase AB",
+        "Pan A",
+        "Pan B",
+        "Pan AB",
+        "Cutoff A",
+        "Cutoff B",
+        "CutoffAB",
+        "Reso A",
+        "Reso B",
+        "Reso AB",
+        "PhsrFreq",
+        "Mix A",
+        "Mix B",
+        "Mix AB",
+        "LFO1Rate",
+        "LFO1Gain",
+        "LFO2Rate",
+        "LFO2Gain",
+        "DistAmnt"
+    ],
+    "description": "Destination 1 for Miscellaneous Modulation Panel 1B"
+  },
+  "ymodmisc1b_dest2": {
+    "name": "ymodmisc1b_dest2",
+    "type": "enum",
+    "options": [
+        "None",
+        "Volume A",
+        "Volume B",
+        "VolumeAB",
+        "Pitch A",
+        "Pitch B",
+        "Pitch AB",
+        "Phase A",
+        "Phase B",
+        "Phase AB",
+        "Pan A",
+        "Pan B",
+        "Pan AB",
+        "Cutoff A",
+        "Cutoff B",
+        "CutoffAB",
+        "Reso A",
+        "Reso B",
+        "Reso AB",
+        "PhsrFreq",
+        "Mix A",
+        "Mix B",
+        "Mix AB",
+        "LFO1Rate",
+        "LFO1Gain",
+        "LFO2Rate",
+        "LFO2Gain",
+        "DistAmnt"
+    ],
+    "description": "Destination 2 for Miscellaneous Modulation Panel 1B"
+  },
+  "ymodmisc2a_dest1": {
+    "name": "ymodmisc2a_dest1",
+    "type": "enum",
+    "options": [
+        "None",
+        "Volume A",
+        "Volume B",
+        "VolumeAB",
+        "Pitch A",
+        "Pitch B",
+        "Pitch AB",
+        "Phase A",
+        "Phase B",
+        "Phase AB",
+        "Pan A",
+        "Pan B",
+        "Pan AB",
+        "Cutoff A",
+        "Cutoff B",
+        "CutoffAB",
+        "Reso A",
+        "Reso B",
+        "Reso AB",
+        "PhsrFreq",
+        "Mix A",
+        "Mix B",
+        "Mix AB",
+        "LFO1Rate",
+        "LFO1Gain",
+        "LFO2Rate",
+        "LFO2Gain",
+        "DistAmnt"
+    ],
+    "description": "Destination 1 for Miscellaneous Modulation Panel 2A"
+  },
+  "ymodmisc2a_dest2": {
+    "name": "ymodmisc2a_dest2",
+    "type": "enum",
+    "options": [
+        "None",
+        "Volume A",
+        "Volume B",
+        "VolumeAB",
+        "Pitch A",
+        "Pitch B",
+        "Pitch AB",
+        "Phase A",
+        "Phase B",
+        "Phase AB",
+        "Pan A",
+        "Pan B",
+        "Pan AB",
+        "Cutoff A",
+        "Cutoff B",
+        "CutoffAB",
+        "Reso A",
+        "Reso B",
+        "Reso AB",
+        "PhsrFreq",
+        "Mix A",
+        "Mix B",
+        "Mix AB",
+        "LFO1Rate",
+        "LFO1Gain",
+        "LFO2Rate",
+        "LFO2Gain",
+        "DistAmnt"
+    ],
+    "description": "Destination 2 for Miscellaneous Modulation Panel 2A"
+  },
+  "ymodmisc2b_dest1": {
+    "name": "ymodmisc2b_dest1",
+    "type": "enum",
+    "options": [
+        "None",
+        "Volume A",
+        "Volume B",
+        "VolumeAB",
+        "Pitch A",
+        "Pitch B",
+        "Pitch AB",
+        "Phase A",
+        "Phase B",
+        "Phase AB",
+        "Pan A",
+        "Pan B",
+        "Pan AB",
+        "Cutoff A",
+        "Cutoff B",
+        "CutoffAB",
+        "Reso A",
+        "Reso B",
+        "Reso AB",
+        "PhsrFreq",
+        "Mix A",
+        "Mix B",
+        "Mix AB",
+        "LFO1Rate",
+        "LFO1Gain",
+        "LFO2Rate",
+        "LFO2Gain",
+        "DistAmnt"
+    ],
+    "description": "Destination 1 for Miscellaneous Modulation Panel 2B"
+  },
+  "ymodmisc2b_dest2": {
+    "name": "ymodmisc2b_dest2",
+    "type": "enum",
+    "options": [
+        "None",
+        "Volume A",
+        "Volume B",
+        "VolumeAB",
+        "Pitch A",
+        "Pitch B",
+        "Pitch AB",
+        "Phase A",
+        "Phase B",
+        "Phase AB",
+        "Pan A",
+        "Pan B",
+        "Pan AB",
+        "Cutoff A",
+        "Cutoff B",
+        "CutoffAB",
+        "Reso A",
+        "Reso B",
+        "Reso AB",
+        "PhsrFreq",
+        "Mix A",
+        "Mix B",
+        "Mix AB",
+        "LFO1Rate",
+        "LFO1Gain",
+        "LFO2Rate",
+        "LFO2Gain",
+        "DistAmnt"
+    ],
+    "description": "Destination 2 for Miscellaneous Modulation Panel 2B"
+  },
+  "part_select": {
+    "name": "part_select",
+    "type": "enum",
+    "options": [
+        "Part A",
+        "Part B"
+    ],
+    "description": "Determines whether Part A or Part B of Sylenth1 is displayed"
+  }
+}
