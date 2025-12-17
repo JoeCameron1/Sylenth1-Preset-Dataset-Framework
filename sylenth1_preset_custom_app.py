@@ -554,7 +554,7 @@ class PianoKeyboard(QFrame):
             name = self._note_name(n)
             if name:
                 painter.setPen(QPen(QColor(0, 0, 0)))
-                painter.drawText(x, h - 6, white_w, 14, Qt.AlignHCenter | Qt.AlignBottom, name)
+                painter.drawText(x, h - 20, white_w, 14, Qt.AlignHCenter | Qt.AlignBottom, name)
 
         # --- Draw black keys on top ---
         black_w = int(white_w * 0.6)
@@ -588,7 +588,7 @@ class PianoKeyboard(QFrame):
             name = self._note_name(n)
             if name:
                 painter.setPen(QPen(QColor(255, 255, 255)))
-                painter.drawText(bx, black_h - 6, black_w, 14, Qt.AlignHCenter | Qt.AlignBottom, name)
+                painter.drawText(bx, black_h - 20, black_w, 14, Qt.AlignHCenter | Qt.AlignBottom, name)
 
         painter.end()
 
