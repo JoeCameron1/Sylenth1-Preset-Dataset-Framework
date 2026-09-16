@@ -1,10 +1,8 @@
-"""Algorithmic pathology candidate selection for author listening (R2).
+"""Algorithmic pathology candidate selection for listening audits.
 
-R2 asked for a listening-test pass on "samples that strongly deviate the
-most from the preset". R1 cited a specific concerning example
-(``0029e854.wav``). Both ultimately want a small, curated audit set the
-author can listen to and decide whether the AC descriptors agree with
-human perception, OR whether the random sampler produced unmusical patches.
+Builds a small, curated audit set that a listener can use to decide whether
+the AC descriptors agree with human perception, or whether the random
+sampler produced unmusical patches.
 
 This script does NOT do the listening (that requires humans). It builds the
 curated candidate set algorithmically using five complementary criteria, each
@@ -22,9 +20,9 @@ contributing a handful of presets:
   (D) Z-score outliers — presets with any AC descriptor more than 3 stddev
       from the per-descriptor mean. Statistical anomalies.
   (E) Maximally distant from any factory — high-tail of assign_distance
-      from splits.json (R1: "presets near (0,12.5)" / "those filled with
-      blue points due to chosen interpolation strategy"). These are the
-      presets most likely to be musically suspicious.
+      from splits.json: the interpolation tail farthest from any factory
+      progenitor, and therefore the presets most likely to be musically
+      suspicious.
 
 Output:
   baselines/artifacts/results/pathology_candidates.csv

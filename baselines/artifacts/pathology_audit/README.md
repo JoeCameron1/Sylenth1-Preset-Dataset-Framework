@@ -12,8 +12,8 @@ Filename convention: `{kind}_{reason}_{preset_id}.wav`.
   disagrees most strongly (in z-score space) with a simple acoustic
   predictor. If the audio "sounds bright" but AC `brightness` is low (or
   vice-versa), the AC label is the suspect. Pairs covered:
-  brightness~centroid, depth~low_band_ratio, boominess~low_band_ratio,
-  warmth~high_band_ratio.
+  `brightness~centroid`, `depth~low_band_ratio`, `boominess~low_band_ratio`,
+  `warmth~high_band_ratio`.
 * `contradictory_pair:<a>+<b>` — presets with both descriptors high when
   they should typically trade off: brightness+boominess, depth+sharpness,
   warmth+sharpness.
@@ -25,9 +25,8 @@ Filename convention: `{kind}_{reason}_{preset_id}.wav`.
 * `extreme_zscore` — any AC descriptor more than 3 stddev from the
   per-descriptor mean. Statistical anomalies.
 * `max_distance_from_factory` — random presets with the largest assigned
-  distance from their nearest factory progenitor (per `splits.json`).
-  R1 flagged these as the "interpolation tail" that may include
-  unmusical patches.
+  distance from their nearest factory progenitor (per `splits.json`) —
+  the "interpolation tail" most likely to include unmusical patches.
 
 ## Suggested listening protocol
 
@@ -39,5 +38,5 @@ For each WAV, listen and decide:
 4. If `max_distance_from_factory`: does the patch sound musically usable,
    or does it sound like a "preset gone wrong"?
 
-A short report of agreement/disagreement counts per criterion supplies the
-qualitative response to R2's revision request.
+A short report of agreement/disagreement counts per criterion provides a
+qualitative assessment of label validity on the dataset's edge cases.

@@ -1,4 +1,4 @@
-"""Render the 292 factory preset WAVs to ship with the repo (R1).
+"""Render the 292 factory preset WAVs to ship with the repo.
 
 Each factory preset's stored params are applied to a freshly-loaded plugin,
 rendered at A4 (the dataset's reference pitch) through the IDENTICAL
