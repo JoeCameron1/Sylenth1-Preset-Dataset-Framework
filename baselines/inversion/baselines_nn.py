@@ -1,4 +1,4 @@
-"""Nearest-neighbour descriptor->preset retrieval (Task 5 baseline).
+"""Nearest-neighbour descriptor->preset retrieval baseline.
 
 Index = TRAIN-split presets keyed by their 7-D AudioCommons descriptor.
 For each test target descriptor vector, return the params of the train preset

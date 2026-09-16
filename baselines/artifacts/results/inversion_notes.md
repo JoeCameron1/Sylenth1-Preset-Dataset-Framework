@@ -1,7 +1,9 @@
 # Descriptor -> parameter inversion — notes
 
 Companion to `inversion_metrics_full.csv` (full test set, n=1481) and
-`inversion_metrics.csv` (n=200 sanity check). Task 5.
+`inversion_metrics.csv` (n=200 sanity check). The tables below are the
+seed-0 run; multi-seed results (four training seeds) are in
+`inversion_metrics_full_seed{1..3}.csv` and `inversion_metrics_multiseed.csv`.
 
 ## Headline test-set numbers (full test split, n=1481)
 
@@ -31,8 +33,8 @@ Per-descriptor MAE (full test set, 0-100 units):
 | **macro**  | **2.94** | **13.49** | **18.14** |
 
 NN sits within **2-4 MAE on every descriptor** — extremely consistent.
-For reference, the pipeline noise floor (Task 1, identical preset
-rendered twice within the same plugin session) is per-descriptor MAE
+For reference, the pipeline noise floor (render-parity check: identical
+preset rendered twice within the same plugin session) is per-descriptor MAE
 ~1-2 on the 0-100 scale. **NN retrieval sits essentially at this noise
 floor**, meaning round-trip MAE on the released splits is effectively
 ceiling-bounded by Sylenth1's per-render variance, not by anything a
@@ -51,9 +53,8 @@ ordering and magnitudes. Conclusions are robust.
 
 ## What this means
 
-The CVAE — the "headline" generative baseline — does **not** beat NN
-retrieval on this dataset. The story is consistent and worth reporting
-honestly in the revised paper:
+The CVAE — the generative baseline — does **not** beat NN retrieval on
+this dataset. The story is consistent:
 
 * The training partition (6,711 presets) is dense enough in 7-D descriptor
   space that "find the closest existing patch" already saturates the round-
@@ -67,7 +68,7 @@ honestly in the revised paper:
   the descriptor condition.
 * Both CVAE modes achieve 100% validity (every generated patch passed
   `clamp_and_validate` without losing any keys); the audibility-rate gap
-  (99.5% for `cvae_sample`) reflects the occasional silent patch from
+  (99.9% for `cvae_sample` at seed 0) reflects the occasional silent patch from
   unconstrained prior sampling.
 
 ## Reproducing

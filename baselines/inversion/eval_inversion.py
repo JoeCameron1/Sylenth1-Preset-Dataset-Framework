@@ -1,4 +1,4 @@
-"""Round-trip inversion evaluation (Task 5, core).
+"""Round-trip inversion evaluation.
 
 For each test target descriptor vector d:
   1. Generate params p_hat from a method (NN retrieval, CVAE posterior-mean,

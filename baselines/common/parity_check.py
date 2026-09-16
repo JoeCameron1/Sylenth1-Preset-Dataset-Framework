@@ -1,10 +1,10 @@
-"""Render-parity gate for Task 1.
+"""Render-parity verification gate.
 
 Sample N presets from FINAL_timbral_dataset_audiocommons.json, feed each one's
 stored ``params`` through ``render_and_describe()``, and compare the 7
 recomputed AudioCommons descriptors to the values shipped in the dataset.
 
-Pass criterion (per spec §2): per-descriptor MAE far below 1.0 on the 0-100
+Pass criterion: per-descriptor MAE far below 1.0 on the 0-100
 scale (ideally well below). Write the per-preset diffs to
 ``baselines/artifacts/results/render_parity_check.csv`` and print a summary.
 

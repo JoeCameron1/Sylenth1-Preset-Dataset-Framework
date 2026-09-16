@@ -1,7 +1,6 @@
 # Multi-pitch sensitivity — notes
 
-Companion to `multipitch_sensitivity.csv` and `multipitch_renders.csv`
-(Task 7, spec §8).
+Companion to `multipitch_sensitivity.csv` and `multipitch_renders.csv`.
 
 ## Setup
 
@@ -35,23 +34,23 @@ the extremes:
   deviations are within a few units of each other).
 * A3 and A5 are intermediate (5-11 units). Adjacent octaves are not free.
 
-## Implication for the baselines / paper
+## Implications
 
 This **measures** the pitch-dependence limitation rather than leaving it
-unaddressed — exactly what Reviewer 1 ("run more than one pitch") and
-Reviewer 3 (Reymore et al. citation) asked for. The A4-only dataset and
-baselines remain a coherent benchmark *at A4*, with this study as the
-justification — but the revised paper should clearly state:
+unaddressed. The A4-only dataset and baselines remain a coherent benchmark
+*at A4*, with this study as the justification. Three consequences:
 
 * The A4 descriptors do **not** transfer linearly to other pitches; a future
   multipitch extension is needed for register-spanning timbral retrieval /
   inversion claims.
-* The CVAE round-trip eval (Task 5) is bounded to the A4 condition under
+* The CVAE round-trip eval is bounded to the A4 condition under
   which the dataset was built; reporting it as "1-octave performance" rather
   than "pitch-invariant performance" is the honest framing.
-* Depth and boominess are the most pitch-sensitive descriptors — when the
-  paper discusses these in Section 5, it should note that their values are
-  meaningful relative to register rather than absolute.
+* Depth and boominess are the most pitch-sensitive descriptors — their
+  values are meaningful relative to register rather than absolute.
 
-The heatmap (`baselines/artifacts/figures/multipitch_heatmap.png`) is the
-single figure that conveys all of the above.
+The heatmap (`baselines/artifacts/figures/multipitch_heatmap.png`) and the
+signed-deviation boxplots
+(`baselines/artifacts/figures/multipitch_boxplots.png`) convey the above;
+extended distributional statistics (std, median absolute deviation, signed
+range) are in `multipitch_sensitivity.csv`.

@@ -1,4 +1,4 @@
-"""Recovery-based grouped train/val/test splits (Task 3, spec §4).
+"""Recovery-based grouped train/val/test splits.
 
 Random presets are 1-to-k parameter mutations of factory presets, but the
 originating factory ID was never logged. Naive row-level splitting would put

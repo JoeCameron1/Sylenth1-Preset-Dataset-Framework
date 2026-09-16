@@ -1,14 +1,15 @@
-"""Consolidated multi-panel parameter-distribution figure.
+"""Consolidated multi-panel parameter-distribution figure (Figure 4 of the paper).
 
-Replaces the seven near-identical param-distribution plots Reviewer 3 flagged
-(Figs 4-10 in the original draft) with ONE figure. Each panel overlays the
-factory and random distributions for one parameter on shared axes (R3's
-specific ask for "comparative overlay plots ... that would make these
-patterns visually accessible" missing from the original figures).
+One figure, seven panels: six numeric parameters as factory-vs-random overlay
+histograms plus the categorical oscillator waveform as side-by-side proportion
+bars (spanning two grid slots so the 2x4 grid has no empty space).
 
-Defaults match the six numeric parameters used in the original Figs 4-9 plus
-the categorical waveform from Fig 10 (rendered as side-by-side proportion
-bars). Pass ``--numeric``/``--categorical`` to override.
+Encoding:
+- Random-preset histograms are drawn as blue-hatched translucent overlays on
+  top of the solid factory bars, so bins where the random density is LOWER
+  than the factory density remain visible.
+- Panels grouped by function (filter | envelope || oscillator | effects |
+  categorical), no suptitle (captions carry the description), larger fonts.
 
 Usage:
     python -m baselines.sensitivity.param_distributions_consolidated \\
@@ -22,29 +23,31 @@ import argparse
 import json
 from pathlib import Path
 
+import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
 import numpy as np
 
 plt.rcParams.update({
-    "font.size": 13,
-    "axes.titlesize": 13,
-    "axes.labelsize": 12,
-    "xtick.labelsize": 10,
-    "ytick.labelsize": 10,
+    "font.size": 15,
+    "axes.titlesize": 16,
+    "axes.labelsize": 14,
+    "xtick.labelsize": 12,
+    "ytick.labelsize": 12,
+    "legend.fontsize": 13,
     "figure.dpi": 150,
+    "hatch.linewidth": 0.9,
 })
 
-# The six numeric parameters used in the original Figs 4-9, and the
-# categorical waveform from Fig 10. Reviewer 3 asked for "a few
-# representative params"; we keep the exact set the reviewers were looking
-# at, just consolidated into one multi-panel figure with overlays.
+# Grouped by function: filtering, then envelope, then oscillator/effects.
+# The categorical waveform panel is drawn last, spanning two grid slots.
 DEFAULT_NUMERIC = [
     "filter_a_cutoff",
     "filterctl_cutoff",
-    "ampenv_a_decay",
     "ampenv_a_attack",
+    "ampenv_a_decay",
     "osc_a1_detune",
-    "reverb_drywet",
+    "reverb_dry_wet",
 ]
 DEFAULT_CATEGORICAL = [
     "osc_a1_waveform",
@@ -99,59 +102,70 @@ def main() -> int:
                 continue
             categorical[p][kind].append(str(v))
 
-    total = len(args.numeric) + len(args.categorical)
-    n_cols = 3
-    n_rows = (total + n_cols - 1) // n_cols
-    fig, axes = plt.subplots(n_rows, n_cols, figsize=(4.5 * n_cols, 3.0 * n_rows))
-    axes = np.atleast_1d(axes).flatten()
-
-    panel = 0
-    # Numeric panels: overlayed density histograms (factory in orange, random in blue),
-    # sharing a common x-axis range per panel so the two distributions are directly comparable.
+    # Fail loudly on a missing/empty parameter rather than shipping a
+    # blank panel.
     for p in args.numeric:
-        ax = axes[panel]; panel += 1
+        if not (numeric[p]["factory"] or numeric[p]["random"]):
+            raise SystemExit(f"No numeric values found for parameter {p!r} - "
+                             f"check the key name against the dataset.")
+
+    # 2x4 grid: six numeric panels, categorical panel spans the last two slots.
+    n_cols = 4
+    n_rows = 2
+    fig = plt.figure(figsize=(5.0 * n_cols, 4.0 * n_rows))
+    gs = fig.add_gridspec(n_rows, n_cols)
+    slots = [(0, 0), (0, 1), (0, 2), (0, 3), (1, 0), (1, 1)]
+
+    random_face = mcolors.to_rgba(RANDOM_COLOR, alpha=0.30)
+
+    for (row, col), p in zip(slots, args.numeric):
+        ax = fig.add_subplot(gs[row, col])
         f = np.asarray(numeric[p]["factory"], dtype=float)
         r = np.asarray(numeric[p]["random"], dtype=float)
-        if f.size == 0 and r.size == 0:
-            ax.set_title(f"{p}\n(no numeric values)"); ax.axis("off"); continue
-        x_min = float(np.nanmin(np.concatenate([f, r]))) if f.size + r.size else 0.0
-        x_max = float(np.nanmax(np.concatenate([f, r]))) if f.size + r.size else 1.0
-        bins = np.linspace(x_min, x_max, args.bins + 1)
-        if r.size:
-            ax.hist(r, bins=bins, density=True, alpha=0.55, color=RANDOM_COLOR, label="random")
-        if f.size:
-            ax.hist(f, bins=bins, density=True, alpha=0.65, color=FACTORY_COLOR, label="factory")
+        both = np.concatenate([f, r])
+        bins = np.linspace(float(np.nanmin(both)), float(np.nanmax(both)),
+                           args.bins + 1)
+        # Factory: solid orange bars underneath.
+        ax.hist(f, bins=bins, density=True, color=FACTORY_COLOR, alpha=0.85,
+                zorder=1)
+        # Random: translucent blue fill with blue diagonal hatching on top, so
+        # bins where random < factory show as slashes over the orange bar.
+        ax.hist(r, bins=bins, density=True, histtype="stepfilled",
+                facecolor=random_face, edgecolor=RANDOM_COLOR, hatch="///",
+                linewidth=1.0, zorder=2)
         ax.set_title(p)
-        ax.set_xlabel("value"); ax.set_ylabel("density")
-        if panel == 1:
-            ax.legend(loc="best", fontsize=9)
+        ax.set_xlabel("value")
+        ax.set_ylabel("density")
 
-    # Categorical panels: side-by-side proportion bars per category.
+    # Categorical panel: side-by-side proportion bars, spanning two slots.
     for p in args.categorical:
-        ax = axes[panel]; panel += 1
-        f_counts = {c: categorical[p]["factory"].count(c)
-                    for c in set(categorical[p]["factory"]) | set(categorical[p]["random"])}
-        r_counts = {c: categorical[p]["random"].count(c)
-                    for c in set(categorical[p]["factory"]) | set(categorical[p]["random"])}
-        cats = sorted(f_counts, key=lambda c: -(r_counts.get(c, 0) + f_counts.get(c, 0)))
+        ax = fig.add_subplot(gs[1, 2:4])
+        all_cats = set(categorical[p]["factory"]) | set(categorical[p]["random"])
+        f_counts = {c: categorical[p]["factory"].count(c) for c in all_cats}
+        r_counts = {c: categorical[p]["random"].count(c) for c in all_cats}
+        cats = sorted(all_cats,
+                      key=lambda c: -(r_counts.get(c, 0) + f_counts.get(c, 0)))
         f_total = max(1, sum(f_counts.values()))
         r_total = max(1, sum(r_counts.values()))
         f_prop = [f_counts.get(c, 0) / f_total for c in cats]
         r_prop = [r_counts.get(c, 0) / r_total for c in cats]
         x = np.arange(len(cats))
         w = 0.4
-        ax.bar(x - w / 2, r_prop, w, color=RANDOM_COLOR, alpha=0.85, label="random")
-        ax.bar(x + w / 2, f_prop, w, color=FACTORY_COLOR, alpha=0.85, label="factory")
-        ax.set_xticks(x); ax.set_xticklabels(cats, rotation=35, ha="right", fontsize=9)
-        ax.set_title(p); ax.set_ylabel("proportion")
-        if not args.numeric:
-            ax.legend(loc="best", fontsize=9)
+        ax.bar(x - w / 2, f_prop, w, color=FACTORY_COLOR, alpha=0.85)
+        ax.bar(x + w / 2, r_prop, w, facecolor=random_face,
+               edgecolor=RANDOM_COLOR, hatch="///", linewidth=1.0)
+        ax.set_xticks(x)
+        ax.set_xticklabels(cats, rotation=30, ha="right")
+        ax.set_title(p)
+        ax.set_ylabel("proportion")
 
-    for j in range(panel, len(axes)):
-        axes[j].axis("off")
+    legend_handles = [
+        Patch(facecolor=FACTORY_COLOR, alpha=0.85, label="factory (n=292)"),
+        Patch(facecolor=random_face, edgecolor=RANDOM_COLOR, hatch="///",
+              label="random (n=10,000)"),
+    ]
+    fig.axes[0].legend(handles=legend_handles, loc="upper right")
 
-    fig.suptitle("Factory vs random distributions for representative parameters",
-                 y=1.0, fontsize=15)
     fig.tight_layout()
     fig.savefig(args.output_png, dpi=150, bbox_inches="tight")
     plt.close(fig)

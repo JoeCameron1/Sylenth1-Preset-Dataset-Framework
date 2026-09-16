@@ -1,4 +1,4 @@
-"""Conditional VAE for descriptor -> parameter inversion (Task 5).
+"""Conditional VAE for descriptor -> parameter inversion.
 
 Encoder: q(z | params_encoded, descriptors) -> (mu, logvar)
 Decoder: p(params | z, descriptors) with MIXED output heads matching the

@@ -1,13 +1,13 @@
-"""Multi-pitch sensitivity render pass (Task 7, spec §8).
+"""Multi-pitch sensitivity render pass.
 
 Stratified subset of presets re-rendered at MIDI 45, 57, 69, 81, 93
 (A2, A3, A4, A5, A6) through the IDENTICAL normalisation chain used for
 the A4 dataset. Saves per-(preset, pitch) descriptors to a single CSV for
 the analyse step.
 
-Scope deliberately small: the spec's whole point is to *measure* descriptor
-shifts across register so the A4-only baselines stand on cited evidence, not
-to extend the baselines themselves to multipitch.
+Scope deliberately small: the point is to *measure* descriptor shifts
+across register so the A4-only baselines stand on cited evidence, not to
+extend the baselines themselves to multipitch.
 """
 
 from __future__ import annotations

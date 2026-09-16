@@ -1,4 +1,4 @@
-"""Train the CVAE (Task 5).
+"""Train the CVAE.
 
 Standardises descriptors on TRAIN only, anneals beta linearly to its final
 value over the first 25% of training, early-stops on validation reconstruction

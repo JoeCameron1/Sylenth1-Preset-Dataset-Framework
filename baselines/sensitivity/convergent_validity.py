@@ -1,8 +1,7 @@
 """Convergent-validity check for AudioCommons descriptors on Sylenth1 A4 audio.
 
-Addresses Reviewer 1's main concern (and Reviewer 2's echo): the AudioCommons
-models were developed and validated on real-world / musical-instrument audio,
-not synthesised sounds. The published dataset should demonstrate that the AC
+Motivation: the AudioCommons models were developed and validated on
+real-world / musical-instrument audio, not synthesised sounds. The published dataset should demonstrate that the AC
 labels are at least correlated with simple, well-understood acoustic features
 on Sylenth1 output — i.e. that the labels are doing *something* sensible, not
 just outputting noise on out-of-domain audio.
@@ -79,6 +78,9 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--fig-out", type=Path, default=DEFAULT_FIG)
     ap.add_argument("--limit", type=int, default=None,
                     help="optional cap on number of presets analysed (for smoke testing)")
+    ap.add_argument("--replot", action="store_true",
+                    help="re-render the heatmap from the existing correlations CSV "
+                         "without re-extracting acoustic features")
     return ap.parse_args()
 
 
@@ -135,11 +137,64 @@ def _resolve_wav(entry: dict, random_dir: Path, factory_dir: Path) -> Path | Non
     return candidate if candidate.exists() else None
 
 
+def plot_heatmap(spearman: np.ndarray, fig_out: Path) -> None:
+    """Heatmap of Spearman correlations (rank-based — robust to nonlinear ties).
+
+    Colour scale normalized to the observed correlation range (kept
+    symmetric about zero so sign stays readable), per-cell value
+    annotations, no in-figure title.
+    """
+    plt.rcParams.update({
+        "font.size": 15,
+        "axes.labelsize": 15,
+        "xtick.labelsize": 14,
+        "ytick.labelsize": 14,
+        "figure.dpi": 150,
+    })
+    vmax = float(np.nanmax(np.abs(spearman)))
+    fig, ax = plt.subplots(figsize=(12.5, 6.5))
+    im = ax.imshow(spearman, aspect="auto", vmin=-vmax, vmax=vmax, cmap="RdBu_r")
+    ax.set_xticks(range(len(ACOUSTIC_FEATURES)))
+    ax.set_xticklabels(ACOUSTIC_FEATURES, rotation=35, ha="right")
+    ax.set_yticks(range(len(TIMBRAL_KEYS)))
+    ax.set_yticklabels(TIMBRAL_KEYS)
+    for i in range(spearman.shape[0]):
+        for j in range(spearman.shape[1]):
+            v = spearman[i, j]
+            if np.isfinite(v):
+                ax.text(j, i, f"{v:+.2f}", ha="center", va="center",
+                        color="white" if abs(v) > 0.6 * vmax else "black",
+                        fontsize=13)
+    cb = plt.colorbar(im, ax=ax, fraction=0.04, pad=0.02)
+    cb.set_label("Spearman r")
+    plt.tight_layout()
+    plt.savefig(fig_out, dpi=150)
+    plt.close()
+    print(f"Wrote {fig_out}")
+
+
+def _replot_from_csv(csv_path: Path, fig_out: Path) -> int:
+    spearman = np.full((len(TIMBRAL_KEYS), len(ACOUSTIC_FEATURES)), np.nan)
+    with open(csv_path, newline="") as fh:
+        for row in csv.DictReader(fh):
+            if row["metric"] != "spearman":
+                continue
+            i = TIMBRAL_KEYS.index(row["ac_descriptor"])
+            for j, f in enumerate(ACOUSTIC_FEATURES):
+                if row[f] != "":
+                    spearman[i, j] = float(row[f])
+    plot_heatmap(spearman, fig_out)
+    return 0
+
+
 def main() -> int:
     args = parse_args()
     args.csv_out.parent.mkdir(parents=True, exist_ok=True)
     args.per_preset_out.parent.mkdir(parents=True, exist_ok=True)
     args.fig_out.parent.mkdir(parents=True, exist_ok=True)
+
+    if args.replot:
+        return _replot_from_csv(args.csv_out, args.fig_out)
 
     print(f"Loading dataset: {args.dataset}")
     entries = load_dataset(args.dataset)
@@ -217,27 +272,7 @@ def main() -> int:
             w.writerow(r)
     print(f"Wrote {args.per_preset_out}")
 
-    # Heatmap of Spearman correlations (rank-based — robust to nonlinear ties).
-    plt.rcParams.update({"font.size": 12, "axes.labelsize": 13, "figure.dpi": 150})
-    fig, ax = plt.subplots(figsize=(11, 5.5))
-    im = ax.imshow(spearman, aspect="auto", vmin=-1, vmax=1, cmap="RdBu_r")
-    ax.set_xticks(range(len(ACOUSTIC_FEATURES)))
-    ax.set_xticklabels(ACOUSTIC_FEATURES, rotation=35, ha="right")
-    ax.set_yticks(range(len(TIMBRAL_KEYS)))
-    ax.set_yticklabels(TIMBRAL_KEYS)
-    ax.set_title("Spearman r: AudioCommons descriptors vs simple acoustic features")
-    for i in range(spearman.shape[0]):
-        for j in range(spearman.shape[1]):
-            v = spearman[i, j]
-            if np.isfinite(v):
-                ax.text(j, i, f"{v:+.2f}", ha="center", va="center",
-                        color="white" if abs(v) > 0.55 else "black", fontsize=9)
-    cb = plt.colorbar(im, ax=ax, fraction=0.04, pad=0.02)
-    cb.set_label("Spearman r")
-    plt.tight_layout()
-    plt.savefig(args.fig_out, dpi=150)
-    plt.close()
-    print(f"Wrote {args.fig_out}")
+    plot_heatmap(spearman, args.fig_out)
 
     # Console summary — the expected "diagonal" correlations.
     print("\nKey convergent-validity correlations (Spearman r):")

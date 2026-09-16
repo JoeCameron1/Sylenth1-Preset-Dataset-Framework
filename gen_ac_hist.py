@@ -1,12 +1,28 @@
+"""Histogram grid of the seven AudioCommons descriptors over all presets.
+
+Writes AC_Hist.png (Figure 3 of the paper): no in-figure title (the paper
+caption carries the description), large fonts for full-width inclusion.
+"""
+
 import json
 import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
 
+plt.rcParams.update({
+    "font.size": 16,
+    "axes.titlesize": 18,
+    "axes.labelsize": 16,
+    "xtick.labelsize": 14,
+    "ytick.labelsize": 14,
+    "figure.dpi": 150,
+})
+
 # -----------------------------
 # Config
 # -----------------------------
 JSON_PATH = Path("FINAL_timbral_dataset_audiocommons.json")  # Change to the relevant file
+OUT_PATH = Path("AC_Hist.png")
 TIMBRAL_KEYS = [
     "brightness",
     "warmth",
@@ -54,9 +70,8 @@ for k in TIMBRAL_KEYS:
 # -----------------------------
 # Plot composite histogram grid
 # -----------------------------
-n_feats = len(TIMBRAL_KEYS)
 n_rows, n_cols = 2, 4   # 7 plots + 1 empty
-fig, axes = plt.subplots(n_rows, n_cols, figsize=(12, 6))
+fig, axes = plt.subplots(n_rows, n_cols, figsize=(20, 9))
 axes = axes.flatten()
 
 for i, key in enumerate(TIMBRAL_KEYS):
@@ -71,6 +86,6 @@ for i, key in enumerate(TIMBRAL_KEYS):
 # Hide the unused last axis
 axes[-1].axis("off")
 
-fig.suptitle("Distributions of AudioCommons Timbral Models", y=0.99)
 plt.tight_layout()
-plt.show()
+plt.savefig(OUT_PATH, dpi=150, bbox_inches="tight")
+print(f"Wrote {OUT_PATH}")

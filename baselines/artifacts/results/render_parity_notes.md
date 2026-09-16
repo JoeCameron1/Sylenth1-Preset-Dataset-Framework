@@ -1,6 +1,6 @@
 # Render parity check — notes
 
-Companion to `render_parity_check.csv` (Task 1 verification gate).
+Companion to `render_parity_check.csv` (render-parity verification gate).
 
 **Setup.** 20 random presets sampled with seed=0 from
 `FINAL_timbral_dataset_audiocommons.json`. Each preset's stored 179 params were
@@ -28,7 +28,7 @@ For hardness, roughness, and boominess, parity exceeds the noise floor by
 the dataset stores exactly 0); plugin nondeterminism can push a near-zero
 realisation across the threshold.
 
-**Implication for round-trip evaluation (Task 5).** The per-descriptor
+**Implication for round-trip evaluation.** The per-descriptor
 "pipeline-noise MAE" column above is the floor below which round-trip metrics
 cannot meaningfully improve — any inversion baseline's round-trip MAE should
 be reported alongside this noise floor, computed on the test split, so that

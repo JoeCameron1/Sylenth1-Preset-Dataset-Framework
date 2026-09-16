@@ -1,4 +1,4 @@
-"""Baseline 1 — parameter -> descriptor regression (Task 4, spec §5).
+"""Baseline 1 — parameter -> descriptor regression.
 
 Sanity-check baseline only — descriptors are a near-deterministic function of
 params, so high R^2 here is partly re-learning the AudioCommons model. Useful
@@ -48,6 +48,9 @@ def parse_args() -> argparse.Namespace:
                     help="'cpu' (default) | 'cuda' | 'mps' if available")
     ap.add_argument("--drop-ambiguous", action="store_true",
                     help="exclude flagged-ambiguous random presets")
+    ap.add_argument("--out", type=Path, default=RESULTS_CSV,
+                    help="metrics CSV path (use a per-seed path for multi-seed runs)")
+    ap.add_argument("--fig", type=Path, default=FIG_PNG)
     return ap.parse_args()
 
 
@@ -142,8 +145,8 @@ def main() -> int:
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
 
-    RESULTS_CSV.parent.mkdir(parents=True, exist_ok=True)
-    FIG_PNG.parent.mkdir(parents=True, exist_ok=True)
+    args.out.parent.mkdir(parents=True, exist_ok=True)
+    args.fig.parent.mkdir(parents=True, exist_ok=True)
 
     print("Loading split matrices...")
     splits, _codec = build_split_matrices(drop_ambiguous=args.drop_ambiguous)
@@ -193,13 +196,13 @@ def main() -> int:
         for k in TIMBRAL_KEYS + ("macro",):
             r = {"method": method, "descriptor": k, **M[k]}
             rows.append(r)
-    with open(RESULTS_CSV, "w", newline="") as fh:
+    with open(args.out, "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=["method", "descriptor", "mae", "rmse", "r2", "n"])
         w.writeheader()
         for r in rows:
             r.setdefault("n", "")
             w.writerow(r)
-    print(f"\nWrote {RESULTS_CSV}")
+    print(f"\nWrote {args.out}")
 
     # Grouped bar chart: MAE per descriptor per method.
     width = 0.27
@@ -213,12 +216,12 @@ def main() -> int:
     plt.title("Parameter -> descriptor regression: per-descriptor test MAE")
     plt.legend()
     plt.tight_layout()
-    plt.savefig(FIG_PNG, dpi=150)
+    plt.savefig(args.fig, dpi=150)
     plt.close()
-    print(f"Wrote {FIG_PNG}")
+    print(f"Wrote {args.fig}")
 
     # Save training history alongside results for reproducibility.
-    history_path = RESULTS_CSV.parent / "regression_mlp_train_history.json"
+    history_path = args.out.parent / (args.out.stem + "_mlp_train_history.json")
     with open(history_path, "w") as fh:
         json.dump({"seed": args.seed, "history": hist}, fh, indent=2)
     print(f"Wrote {history_path}")

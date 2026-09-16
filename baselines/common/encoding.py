@@ -1,4 +1,4 @@
-"""Canonical, reversible parameter encoding (Task 2, spec §3).
+"""Canonical, reversible parameter encoding.
 
 One codec shared by both baselines and the CVAE round-trip decoder. Fit on
 the TRAIN split only; persisted as JSON so eval reuses identical statistics

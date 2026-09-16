@@ -1,10 +1,11 @@
 # Parameter count reconciliation
 
-Closes Reviewer 1's "200+ / 102 / 61 / 178" comment. All counts below were
+Authoritative reconciliation of the "200+ / 102 / 61 / 178" counts that
+appeared across earlier artefacts and exports. All counts below were
 recomputed directly from `FINAL_timbral_dataset_audiocommons.json` and
 `sylenth1_params.json` (commands at the end of the file).
 
-## Authoritative counts used throughout the revised paper
+## Authoritative counts used throughout the paper
 
 | Quantity | Count |
 |---|---:|
@@ -20,11 +21,11 @@ recomputed directly from `FINAL_timbral_dataset_audiocommons.json` and
 | PCA's "numeric columns" under the published `pd.api.types.is_numeric_dtype` rule | **121** |
 | Constant-valued float parameters | **0** |
 
-## Resolving each reviewer-flagged number
+## Resolving each number
 
 ### "200+" — raw plugin parameters
 `pedalboard.load_plugin` reports **246** parameters. The Sylenth1 GUI shows
-~200+ controls plus per-step XY arp toggles. The 67 we exclude per §3.3 are
+~200+ controls plus per-step XY arp toggles. The 67 we exclude per Section 3.3 of the paper are
 exactly the arpeggiator (`arp_*`, `xarp_*`, `sw_arponoff`), pitch / portamento
 (`pitchbend`, `pitchbend_range`, `porta_mode`, `porta_time_ms`), global volume
 / bypass / program/sync (`main_volume`, `bypass`, `program`, `sync`), and the

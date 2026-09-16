@@ -2,13 +2,11 @@
 
 Companion to `convergent_validity_correlations.csv`,
 `convergent_validity_per_preset.csv`, and
-`baselines/artifacts/figures/convergent_validity_heatmap.png`. Addresses
-**Reviewer 1's main concern** that the AudioCommons models were developed and
-validated primarily on real-world / musical-instrument audio, not synthesised
-sounds: "the prediction quality in the specific setting must be evaluated...
-at least for a subset the accuracy of the AudioCommons model's predictions on
-the given audio (which is the Sylenth1 output) is measured and shown to be
-sufficient."
+`baselines/artifacts/figures/convergent_validity_heatmap.png`. Motivation:
+the AudioCommons models were developed and validated primarily on
+real-world / musical-instrument audio, not synthesised sounds, so their
+prediction quality on this specific audio distribution (Sylenth1 output)
+must be evaluated rather than assumed.
 
 ## What we did
 
@@ -37,7 +35,7 @@ descriptor and each acoustic feature across the 9,998 presets.
 
 ## Headline correlations (Spearman r, full dataset)
 
-| AC descriptor | strongest acoustic predictor | r | second predictor | r |
+| AC descriptor | expected acoustic predictor | r | second predictor | r |
 |---|---|---:|---|---:|
 | brightness | spectral_centroid    | **+0.87** | high_band_ratio   | +0.85 |
 | depth      | low_band_ratio       | **+0.88** | spectral_rolloff_85 | −0.76 |
@@ -45,7 +43,7 @@ descriptor and each acoustic feature across the 9,998 presets.
 | warmth     | high_band_ratio      | **−0.78** | mid_band_ratio    | −0.39 |
 | sharpness  | spectral_centroid    | **+0.77** | zero_crossing_rate | +0.76 |
 | hardness   | zero_crossing_rate   | **+0.69** | spectral_flatness | +0.52 |
-| roughness  | (no simple predictor strong; r < 0.4 across all)         |  |   |
+| roughness  | (no dedicated psychoacoustic predictor in the set) | | spectral_bandwidth | +0.72 |
 
 Full matrix in `convergent_validity_correlations.csv`; visualised in the
 companion heatmap (RdBu_r, symmetric).
@@ -63,17 +61,24 @@ Sylenth1 A4 audio:
     *negatively* with high-band energy.
   * hardness: moderate (r = 0.69 with ZCR, 0.52 with flatness) — both
     intuitive predictors, but the labels carry information beyond either.
-  * **roughness**: no simple acoustic feature predicts it strongly (max
-    |r| < 0.4 across the feature set). Combined with the known 0-spike
-    (≈9.8% of the dataset exactly 0), roughness is the descriptor whose
-    AC-vs-perception agreement is least defensible from this analysis
-    alone — the paper should flag it as the one requiring the most caution.
+  * **roughness**: the one descriptor without a dedicated psychoacoustic
+    predictor in the feature set — perceptual roughness is driven by
+    amplitude-modulation/beating cues, and none of the nine features
+    measures modulation content. The correlations it does exhibit (max
+    +0.72 with spectral_bandwidth, +0.67 with high_band_ratio) are with the
+    same generic spectral features that predict the brightness family,
+    suggesting the AC roughness output tracks overall spectral brashness on
+    this corpus rather than a roughness-specific cue. Combined with the
+    known 0-spike (≈9.8% of the dataset exactly 0), roughness is the
+    descriptor whose AC-vs-perception agreement is least defensible from
+    this analysis alone — flagged in the paper as the one requiring the
+    most caution.
 
 These results do not replace a perceptual study, but they directly answer
-the "is the AC model even sensible on this audio?" challenge from R1 with
+the "is the AC model even sensible on this audio?" question with
 quantitative evidence on the full 10k random subset: **yes for 5 of 7
-descriptors with high confidence, moderately for hardness, and not for
-roughness from this evidence**.
+descriptors with high confidence, moderately for hardness; roughness lacks
+a roughness-specific correlate and requires the most caution**.
 
 ## Companion: pathology candidate set
 
@@ -81,5 +86,5 @@ roughness from this evidence**.
 WAVs) provide a curated audit set selected by 11 algorithmic criteria
 (convergent-validity outliers, contradictory descriptor pairs, roughness
 edge cases, z-score outliers, presets maximally far from any factory
-parent). This addresses Reviewer 2's "listening test on samples that
-strongly deviate the most from the preset".
+parent), supporting qualitative listening inspection of the presets that
+deviate most strongly from expectation.
